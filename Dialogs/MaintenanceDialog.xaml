@@ -1,0 +1,71 @@
+<Window x:Class="TrackMaintenance.Dialogs.MaintenanceDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        Title="记录保养" Width="440" Height="400"
+        ResizeMode="NoResize" WindowStartupLocation="CenterOwner"
+        FontFamily="Segoe UI, Microsoft YaHei UI, Arial">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Background="{StaticResource GoodGreen}" Padding="24,16">
+            <StackPanel>
+                <TextBlock Text="记录保养完成" Foreground="White" FontSize="16" FontWeight="Bold"/>
+                <TextBlock x:Name="ComponentLabel" Foreground="#BBF7D0" FontSize="12" Margin="0,4,0,0"/>
+            </StackPanel>
+        </Border>
+
+        <StackPanel Grid.Row="1" Margin="24,20,24,0">
+
+            <!-- Current status card -->
+            <Border x:Name="StatusCard" CornerRadius="8" Padding="14,10" Margin="0,0,0,18">
+                <StackPanel>
+                    <TextBlock Text="当前状态" FontSize="11" FontWeight="Bold"
+                               Foreground="{StaticResource TextSecondary}" Margin="0,0,0,4"/>
+                    <TextBlock x:Name="StatusText" FontSize="13" FontWeight="SemiBold"
+                               Foreground="{StaticResource TextPrimary}" TextWrapping="Wrap"/>
+                </StackPanel>
+            </Border>
+
+            <Grid Margin="0,0,0,16">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="16"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel>
+                    <TextBlock Text="保养日期" FontSize="12" FontWeight="Bold"
+                               Foreground="{StaticResource TextSecondary}" Margin="0,0,0,5"/>
+                    <DatePicker x:Name="DatePicker" Height="36"
+                                SelectedDate="{x:Static sys:DateTime.Today}"/>
+                </StackPanel>
+                <StackPanel Grid.Column="2">
+                    <TextBlock Text="当前里程 (km)" FontSize="12" FontWeight="Bold"
+                               Foreground="{StaticResource TextSecondary}" Margin="0,0,0,5"/>
+                    <TextBox x:Name="OdometerBox" Height="36"/>
+                </StackPanel>
+            </Grid>
+
+            <TextBlock Text="备注（品牌、规格等）" FontSize="12" FontWeight="Bold"
+                       Foreground="{StaticResource TextSecondary}" Margin="0,0,0,5"/>
+            <TextBox x:Name="NotesBox" Height="26" AcceptsReturn="True" VerticalContentAlignment="Top" Padding="10,8"
+                     TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Width="385"/>
+
+            <TextBlock Margin="0,12,0,0" FontSize="11" Foreground="{StaticResource TextSecondary}"
+                       Text="保存后将重置该项目折算里程，从当前里程重新开始计算。"
+                       TextWrapping="Wrap"/>
+        </StackPanel>
+
+        <Border Grid.Row="2" Padding="24,14" Background="#F8FAFC"
+                BorderBrush="{StaticResource BorderLight}" BorderThickness="0,1,0,0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Content="取消" Style="{StaticResource OutlineBtn}" Margin="0,0,10,0" Click="Cancel_Click"/>
+                <Button Content="确认保养完成" Style="{StaticResource GreenBtn}" Click="Save_Click"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

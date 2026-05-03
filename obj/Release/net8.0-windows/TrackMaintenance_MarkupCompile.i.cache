@@ -1,0 +1,20 @@
+﻿TrackMaintenance
+1.0.0.0
+
+winexe
+C#
+.cs
+D:\WeChat Files\TrackMaintenance\TM\obj\Release\net8.0-windows\
+TrackMaintenance
+none
+false
+TRACE;RELEASE;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
+D:\WeChat Files\TrackMaintenance\TM\App.xaml
+10-57196183
+
+181403944583
+198-211836927
+Dialogs\EditItemDialog.xaml;Dialogs\MaintenanceDialog.xaml;Dialogs\TrackDayDialog.xaml;Dialogs\VehicleDialog.xaml;MainWindow.xaml;Views\DashboardView.xaml;Views\MaintenanceLogView.xaml;Views\SettingsView.xaml;Views\TrackDaysView.xaml;Views\VehiclesView.xaml;
+
+False
+

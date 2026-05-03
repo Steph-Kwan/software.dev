@@ -1,0 +1,65 @@
+<Window x:Class="TrackMaintenance.Dialogs.TrackDayDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        Title="记录赛道日" Width="360" Height="480"
+        ResizeMode="NoResize" WindowStartupLocation="CenterOwner"
+        FontFamily="Segoe UI, Microsoft YaHei UI, Arial">
+    <Grid Margin="0,0,0,-94">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="Auto" MinHeight="34.64"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0" Background="{StaticResource GoodGreen}" Padding="24,16">
+            <StackPanel>
+                <TextBlock Text="记录赛道日" Foreground="White" FontSize="16" FontWeight="Bold"/>
+                <TextBlock x:Name="VehicleName" Foreground="#BBF7D0" FontSize="12" Margin="0,4,0,0"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Form -->
+        <StackPanel Grid.Row="1" Margin="24,20,24,-2" Grid.RowSpan="2">
+
+            <TextBlock Text="日期" FontSize="12" FontWeight="Bold"
+                       Foreground="{StaticResource TextSecondary}" Margin="0,0,0,5"/>
+            <DatePicker x:Name="DatePicker" SelectedDate="{x:Static sys:DateTime.Today}"
+                        Margin="0,0,0,16" Height="24"/>
+
+            <TextBlock Text="下赛道节数" FontSize="12" FontWeight="Bold"
+                       Foreground="{StaticResource TextSecondary}" Margin="0,0,0,5"/>
+            <ComboBox x:Name="SessionsCombo" SelectedIndex="0" Margin="0,0,0,16" Height="29">
+                <ComboBoxItem Content="1 节"/>
+                <ComboBoxItem Content="2 节"/>
+                <ComboBoxItem Content="3 节"/>
+                <ComboBoxItem Content="4 节"/>
+                <ComboBoxItem Content="5 节"/>
+                <ComboBoxItem Content="6 节"/>
+                <ComboBoxItem Content="7 节"/>
+                <ComboBoxItem Content="8 节"/>
+                <ComboBoxItem Content="9 节"/>
+                <ComboBoxItem Content="10 节"/>
+            </ComboBox>
+            <TextBlock Text="赛道 / 备注（可选）" FontSize="12" FontWeight="Bold"
+                       Foreground="{StaticResource TextSecondary}" Height="35"/>
+            <TextBox x:Name="NotesBox" Height="36"/>
+
+            <!-- Preview -->
+            <Border Background="#ECFDF5" CornerRadius="6" Padding="12,8" Margin="0,14,0,0" RenderTransformOrigin="0.487,-1.014">
+                <TextBlock x:Name="PreviewText" FontSize="12"
+                           Foreground="{StaticResource GoodGreen}" TextWrapping="Wrap" FontWeight="SemiBold" RenderTransformOrigin="0.516,-2.657" Width="276"/>
+            </Border>
+        </StackPanel>
+
+        <!-- Buttons -->
+        <Border Grid.Row="1" Padding="24,14" Background="#F8FAFC"
+                BorderBrush="{StaticResource BorderLight}" BorderThickness="0,1,0,0" Margin="0,295,0,59">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Content="取消" Style="{StaticResource OutlineBtn}" Margin="0,0,10,0" Click="Cancel_Click"/>
+                <Button Content="保存" Style="{StaticResource GreenBtn}" Click="Save_Click"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

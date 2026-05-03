@@ -1,0 +1,45 @@
+<UserControl x:Class="TrackMaintenance.Views.VehiclesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>  <!-- footer -->
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Background="White" Padding="24,14"
+                BorderBrush="{StaticResource BorderLight}" BorderThickness="0,0,0,1">
+            <Grid>
+                <TextBlock Text="车辆管理" Style="{StaticResource PageTitle}" VerticalAlignment="Center"/>
+                <Button HorizontalAlignment="Right" VerticalAlignment="Center"
+                        Content="+ 添加车辆" Style="{StaticResource PrimaryBtn}"
+                        Click="AddVehicle_Click"/>
+            </Grid>
+        </Border>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled"
+                      Padding="16,16,16,8">
+            <StackPanel x:Name="VehicleList"/>
+        </ScrollViewer>
+
+        <StackPanel x:Name="EmptyState" Grid.Row="1" Visibility="Collapsed"
+                    HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="暂无车辆" FontSize="18" FontWeight="Bold"
+                       Foreground="{StaticResource TextSecondary}" HorizontalAlignment="Center"/>
+            <TextBlock Text="点击右上角按钮添加你的爱车" FontSize="13"
+                       Foreground="{StaticResource TextSecondary}"
+                       HorizontalAlignment="Center" Margin="0,8,0,0"/>
+        </StackPanel>
+    
+        <!-- Copyright footer -->
+        <Border Grid.Row="2" Background="White" Padding="20,7"
+                BorderBrush="{StaticResource BorderLight}" BorderThickness="0,1,0,0">
+            <TextBlock Text="© Stephen Kwan  |  kwan.stephen@outlook.com"
+                       FontSize="11" Foreground="{StaticResource TextSecondary}"
+                       HorizontalAlignment="Right"/>
+        </Border>
+    </Grid>
+</UserControl>

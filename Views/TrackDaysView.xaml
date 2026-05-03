@@ -1,0 +1,90 @@
+<UserControl x:Class="TrackMaintenance.Views.TrackDaysView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>   <!-- header -->
+            <RowDefinition Height="Auto"/>   <!-- summary -->
+            <RowDefinition Height="*"/>      <!-- data grid -->
+            <RowDefinition Height="Auto"/>   <!-- footer -->
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0" Background="White" Padding="24,14"
+                BorderBrush="{StaticResource BorderLight}" BorderThickness="0,0,0,1">
+            <Grid>
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Text="赛道日志" Style="{StaticResource PageTitle}"/>
+                    <TextBlock x:Name="SubtitleText" Foreground="{StaticResource TextSecondary}"
+                               FontSize="12" FontWeight="SemiBold" Margin="0,3,0,0"/>
+                </StackPanel>
+                <Button HorizontalAlignment="Right" VerticalAlignment="Center"
+                        Content="+ 记录赛道日" Style="{StaticResource GreenBtn}" Click="AddBtn_Click"/>
+            </Grid>
+        </Border>
+
+        <!-- Summary strip -->
+        <Border Grid.Row="1" Background="#F0F7FF" Padding="24,10"
+                BorderBrush="{StaticResource BorderLight}" BorderThickness="0,0,0,1">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Margin="0,0,40,0">
+                    <TextBlock Text="总节数" FontSize="10" FontWeight="Bold"
+                               Foreground="{StaticResource TextSecondary}" Margin="0,0,0,2"/>
+                    <TextBlock x:Name="TotalSessionsText" FontSize="20" FontWeight="Bold"
+                               Foreground="{StaticResource PrimaryBlue}"/>
+                </StackPanel>
+                <StackPanel Margin="0,0,40,0">
+                    <TextBlock Text="赛道天数" FontSize="10" FontWeight="Bold"
+                               Foreground="{StaticResource TextSecondary}" Margin="0,0,0,2"/>
+                    <TextBlock x:Name="TotalDaysText" FontSize="20" FontWeight="Bold"
+                               Foreground="{StaticResource PrimaryBlue}"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <!-- List -->
+        <Border Grid.Row="2" Margin="16" Background="White" CornerRadius="10"
+                BorderBrush="{StaticResource BorderLight}" BorderThickness="1">
+            <Border.Effect>
+                <DropShadowEffect Color="Black" BlurRadius="8" ShadowDepth="1" Opacity="0.07"/>
+            </Border.Effect>
+            <DataGrid x:Name="TrackGrid" BorderThickness="0"
+                      EnableRowVirtualization="True"
+                      ScrollViewer.VerticalScrollBarVisibility="Auto"
+                      ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                      MaxHeight="99999">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="日期"   Binding="{Binding DateDisplay}" Width="110"/>
+                    <DataGridTextColumn Header="节数"   Binding="{Binding Sessions}"    Width="70"/>
+                    <DataGridTextColumn Header="备注"   Binding="{Binding Track}"       Width="*"/>
+                    <DataGridTemplateColumn Header="操作" Width="70">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="删除" Style="{StaticResource DangerBtn}"
+                                        Height="26" Tag="{Binding}"
+                                        Click="DeleteBtn_Click"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+
+        <StackPanel x:Name="EmptyState" Grid.Row="2" Visibility="Collapsed"
+                    HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="暂无赛道记录" FontSize="18" FontWeight="Bold"
+                       Foreground="{StaticResource TextSecondary}" HorizontalAlignment="Center"/>
+            <TextBlock Text="点击「记录赛道日」开始记录" FontSize="13"
+                       Foreground="{StaticResource TextSecondary}"
+                       HorizontalAlignment="Center" Margin="0,8,0,0"/>
+        </StackPanel>
+    
+        <!-- Copyright footer -->
+        <Border Grid.Row="3" Background="White" Padding="20,7"
+                BorderBrush="{StaticResource BorderLight}" BorderThickness="0,1,0,0">
+            <TextBlock Text="© Stephen Kwan  |  kwan.stephen@outlook.com"
+                       FontSize="11" Foreground="{StaticResource TextSecondary}"
+                       HorizontalAlignment="Right"/>
+        </Border>
+    </Grid>
+</UserControl>
